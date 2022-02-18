@@ -1,0 +1,30 @@
+schema-version: 1.0
+
+type: builder
+
+description: |
+  The Bash package contains the Bourne-Again SHell.
+  Installed programs: bash, bashbug, and sh (link to bash)
+  Installed directory: /usr/include/bash, /usr/lib/bash, and /usr/share/doc/bash-5.1.8
+  Short Descriptions
+    bash: A widely-used command interpreter; it performs many types of expansions and substitutions on a given command line before executing it, thus making this interpreter a powerful tool
+    bashbug: A shell script to help the user compose and mail standard formatted bug reports concerning bash
+    sh: A symlink to the bash program; when invoked as sh, bash tries to mimic the startup behavior of historical versions of sh as closely as possible, while conforming to the POSIX standard as well
+
+in:
+  version: 5.1.8
+
+provision:
+  - url:
+      from: https://ftp.gnu.org/gnu/bash/bash-{% version %}.tar.gz
+      todir: "{% xbeeSrc %}"
+
+build:
+  - shell:
+      cmds:
+        - ./configure --prefix=/usr --docdir=/usr/share/doc/bash-{% version %} --without-bash-malloc --with-installed-readline
+        - make
+        - make install DESTDIR={% xbeeOut %}
+      directory: "{% xbeeSrc %}/bash-{% version %}"
+
+
