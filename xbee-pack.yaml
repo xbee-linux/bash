@@ -16,14 +16,14 @@ var:
     version: 5.1.8
 
 provision:
-  url: https://ftp.gnu.org/gnu/bash/bash-{{ .version }}.tar.gz
+  url: https://ftp.gnu.org/gnu/bash/bash-{{ .xbee.version }}.tar.gz
 
 build:
   - shell:
       cmds:
-        - ./configure --prefix=/usr --docdir=/usr/share/doc/bash-{{ .version }} --without-bash-malloc --with-installed-readline
+        - ./configure --prefix=/usr --docdir=/usr/share/doc/bash-{{ .xbee.version }} --without-bash-malloc --with-installed-readline
         - make
         - make install DESTDIR={{ .xbee.out }}
-      directory: "{{ .xbee.src }}/bash-{{ .version }}"
+      directory: "{{ .xbee.src }}/bash-{{ .xbee.version }}"
 
 
