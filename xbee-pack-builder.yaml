@@ -1,7 +1,5 @@
 schema-version: 1.0
 
-type: builder
-
 description: |
   The Bash package contains the Bourne-Again SHell.
   Installed programs: bash, bashbug, and sh (link to bash)
