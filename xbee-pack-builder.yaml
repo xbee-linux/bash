@@ -18,7 +18,7 @@ provision:
 
 build:
   - shell:
-      cmds:
+      cmd:
         - ./configure --prefix=/usr --docdir=/usr/share/doc/bash-{{ .xbee.version }} --without-bash-malloc --with-installed-readline
         - make
         - make install DESTDIR={{ .xbee.out }}
